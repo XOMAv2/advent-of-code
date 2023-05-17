@@ -1,0 +1,17 @@
+profiles.clj
+pom.xml
+pom.xml.asc
+*.jar
+*.class
+/lib/
+/classes/
+/target/
+/checkouts/
+.lein-*
+.clj-kondo/
+.lsp/
+.nrepl-port
+.cpcache/
+.prepl-port
+.DS_Store
+output.calva-repl

@@ -1,6 +1,6 @@
 (ns adventofcode2022.day11-test
   (:require [adventofcode2022.day11 :as d11]
-            [clojure.test :refer [deftest testing is]]))
+            [clojure.test :refer :all]))
 
 (def input
   "Monkey 0:

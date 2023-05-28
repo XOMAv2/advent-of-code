@@ -1,6 +1,6 @@
 (ns adventofcode2022.day7-test
   (:require [adventofcode2022.day7 :as d7]
-            [clojure.test :refer [deftest testing is]]))
+            [clojure.test :refer :all]))
 
 (def input
   "$ cd /

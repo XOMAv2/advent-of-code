@@ -1,6 +1,6 @@
 (ns adventofcode2022.day12-test
   (:require [adventofcode2022.day12 :as d12]
-            [clojure.test :refer [deftest testing is]]))
+            [clojure.test :refer :all]))
 
 (def input
   "Sabqponm

@@ -1,6 +1,6 @@
 (ns adventofcode2022.day9-test
   (:require [adventofcode2022.day9 :as d9]
-            [clojure.test :refer [deftest testing is]]))
+            [clojure.test :refer :all]))
 
 (deftest part1-test
   (testing "input from the example"

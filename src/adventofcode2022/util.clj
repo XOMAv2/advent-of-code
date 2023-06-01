@@ -107,3 +107,6 @@
             children (map add-path (expand-fn graph node))
             to-visit-d2 (into to-visit-d1 children)]
         (recur visited-d1 to-visit-d2)))))
+
+(def absent?
+  (complement contains?))

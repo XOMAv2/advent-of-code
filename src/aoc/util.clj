@@ -2,6 +2,8 @@
   (:require [better-cond.core :as b]
             [clojure.java.io :as io]))
 
+(set! *warn-on-reflection* true)
+
 (defn sum
   [coll]
   (apply + coll))
@@ -26,12 +28,25 @@
   (split-at (quot (count coll) 2) coll))
 
 (defn re-pos
-  [re s]
+  [^java.util.regex.Pattern re s]
   (let [matcher (re-matcher re s)]
     (loop [acc {}]
       (if (.find matcher)
         (recur (assoc acc (.start matcher) (.group matcher)))
         acc))))
+
+(defn re-seq-pos
+  [^java.util.regex.Pattern re s]
+  (let [matcher (re-matcher re s)]
+    (loop [result nil
+           find? (.find matcher)]
+      (if-not find?
+        (when result
+          (reverse result))
+        (recur (conj result {:start (.start matcher)
+                             :end (.end matcher)
+                             :group (.group matcher)})
+               (.find matcher))))))
 
 (defn find-first
   [f coll]

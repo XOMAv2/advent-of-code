@@ -5,7 +5,8 @@
             :url "https://www.eclipse.org/legal/epl-2.0/"}
   :dependencies [[better-cond "2.1.5"]
                  [dev.weavejester/medley "1.7.0"]
-                 [org.clojure/clojure "1.11.1"]]
+                 [org.clojure/clojure "1.11.1"]
+                 [org.clojure/core.match "1.1.0"]]
   :main ^:skip-aot aoc.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all

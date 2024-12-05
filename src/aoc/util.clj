@@ -23,6 +23,20 @@
   [& colls]
   (reduce into [] colls))
 
+(defn keepv
+  [f coll]
+  (reduce (fn [acc a]
+            (if-some [b (f a)]
+              (conj acc b)
+              acc))
+          []
+          coll))
+
+(defn swap [v i j]
+  (assoc v
+         j (v i)
+         i (v j)))
+
 (defn split-in-half
   [coll]
   (split-at (quot (count coll) 2) coll))

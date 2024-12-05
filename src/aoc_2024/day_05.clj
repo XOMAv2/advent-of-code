@@ -59,17 +59,23 @@
        (:valid)
        (calc-sum)))
 
+(defn page-comparator
+  [ordering-rules]
+  (fn [a b]
+    (cond
+      (get-in ordering-rules [a b]) -1
+      (get-in ordering-rules [b a]) 1
+      :else 0)))
+
 (defn fix
   [ordering-rules pages]
-  (if-let [error (find-error ordering-rules pages)]
-    (recur ordering-rules (apply u/swap pages error))
-    pages))
+  (sort (page-comparator ordering-rules) pages))
 
 (defn part2
   [{:keys [ordering-rules] :as parsed-input}]
   (->> (group-updates parsed-input)
        (:invalid)
-       (map (partial fix ordering-rules))
+       (map (comp vec (partial fix ordering-rules)))
        (calc-sum)))
 
 (comment

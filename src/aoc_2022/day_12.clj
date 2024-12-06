@@ -1,11 +1,9 @@
 (ns aoc-2022.day-12
-  (:require [aoc.util :as u]
-            [clojure.string :as string]))
+  (:require [aoc.matrix2 :as m2]
+            [aoc.util :as u]))
 
-(defn parse-input
-  [input]
-  (->> (string/split-lines input)
-       (mapv vec)))
+(def parse-input
+  m2/parse)
 
 (defn replace-char
   [ch]
@@ -45,8 +43,8 @@
 
 (defn part1
   [matrix]
-  (let [S-position (u/find-in-matrix matrix \S)
-        E-position (u/find-in-matrix matrix \E)]
+  (let [S-position (m2/find matrix \S)
+        E-position (m2/find matrix \E)]
     (-> matrix
         (u/bfs (partial get-possible-steps less-or-equal?) S-position #{E-position})
         (count)
@@ -54,7 +52,7 @@
 
 (defn part2
   [matrix]
-  (let [E-position (u/find-in-matrix matrix \E)
+  (let [E-position (m2/find matrix \E)
         finish? (fn [position]
                   (= \a (get-in matrix position)))]
     (-> matrix

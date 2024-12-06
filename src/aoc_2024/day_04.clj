@@ -1,12 +1,10 @@
 (ns aoc-2024.day-04
-  (:require [aoc.util :as u]
+  (:require [aoc.matrix2 :as m2]
+            [aoc.util :as u]
             [clojure.string :as string]))
 
-(defn parse-input
-  [input]
-  (mapv (fn [line]
-            (mapv identity line))
-          (string/split-lines input)))
+(def parse-input
+  m2/parse)
 
 (defn find-xmas
   [matrix x y dx dy]

@@ -96,18 +96,6 @@
   ([a b & more]
    (reduce lcm (lcm a b) more)))
 
-(defn find-in-matrix
-  [matrix value]
-  (reduce-kv (fn [_ i row]
-               (when-let [j (reduce-kv (fn [_ j el]
-                                         (when (= el value)
-                                           (reduced j)))
-                                       nil
-                                       row)]
-                 (reduced [i j])))
-             nil
-             matrix))
-
 (defn queue
   [& items]
   (reduce conj (clojure.lang.PersistentQueue/EMPTY) items))

@@ -1,6 +1,6 @@
 (ns aoc-2023.day-10
-  (:require [aoc.util :as u]
-            [clojure.string :as string]))
+  (:require [aoc.matrix2 :as m2]
+            [aoc.util :as u]))
 
 (defn replace-s
   [matrix [i j :as position]]
@@ -32,9 +32,8 @@
 
 (defn parse-input
   [input]
-  (let [matrix (->> (string/split-lines input)
-                    (mapv vec))
-        start (u/find-in-matrix matrix \S)]
+  (let [matrix (m2/parse input)
+        start (m2/find matrix \S)]
     {:matrix (replace-s matrix start)
      :rows (count matrix)
      :columns (count (first matrix))

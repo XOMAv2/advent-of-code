@@ -139,3 +139,14 @@
    (assoc! m k (f (get m k) x y z)))
   ([m k f x y z & more]
    (assoc! m k (apply f (get m k) x y z more))))
+
+(defn count-digits
+  [n]
+  (loop [num (abs n)
+         count 0]
+    (if (zero? num)
+      (if (zero? count) ; Handle the case of n = 0
+        1
+        count)
+      (recur (quot num 10)
+             (inc count)))))

@@ -6,7 +6,8 @@
   :dependencies [[better-cond "2.1.5"]
                  [dev.weavejester/medley "1.7.0"]
                  [org.clojure/clojure "1.11.1"]
-                 [org.clojure/core.match "1.1.0"]]
+                 [org.clojure/core.match "1.1.0"]
+                 [org.clojure/math.combinatorics "0.3.0"]]
   :main ^:skip-aot aoc.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all

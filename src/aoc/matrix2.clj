@@ -3,8 +3,12 @@
   (:refer-clojure :exclude [find]))
 
 (defn parse
-  [input]
-  (mapv vec (string/split-lines input)))
+  ([input]
+   (parse identity input))
+  ([f input]
+   (mapv (fn [line]
+           (mapv f line))
+         (string/split-lines input))))
 
 (defn size
   [matrix]

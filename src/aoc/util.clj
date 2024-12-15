@@ -150,3 +150,11 @@
         count)
       (recur (quot num 10)
              (inc count)))))
+
+(defn find-index
+  [coll value]
+  (reduce (fn [_ [i el]]
+            (when (= value el)
+              (reduced i)))
+          nil
+          (map-indexed vector coll)))
